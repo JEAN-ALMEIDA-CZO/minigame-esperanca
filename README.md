@@ -11,7 +11,7 @@ Um jogo web envolvente e desafiador onde você controla um quadrado que coleta l
 ## 🎮 Demonstração
 
 Teste suas habilidades e mergulhe na jornada:  
-👉 [**Ver Jogo em Ação**](https://jean-almeida-czo.github.io/minigame-esperaca)
+👉 [**Ver Jogo em Ação**](https://jean-almeida-czo.github.io/minigame-esperanca/)
 
 ---
 
