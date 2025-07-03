@@ -1,0 +1,297 @@
+         body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #1a1a2e;
+            font-family: 'Inter', Arial, sans-serif;
+            overflow: hidden;
+            border-radius: 12px;
+            user-select: none;
+        }
+        #game-container {
+            position: relative;
+            width: 800px;
+            height: 400px;
+            background: transparent;
+            border: 2px solid #4a69bd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            user-select: none;
+        }
+        canvas {
+            display: block;
+            border-radius: 8px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            user-select: none;
+        }
+        .como-jogar {
+                display: block;
+                border-radius: 8px;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                user-select: none;
+                border: solid 2px #ffff;
+                margin-block: 20px;
+                padding: 28px;
+            
+        }
+        .como-jogar img {
+        color: #ffffff;
+
+        }
+        #message, #level-message, #game-over-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+            font-size: 1.6em;
+            font-weight: bold;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 25px 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 100;
+            user-select: none;
+        }
+        #score {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            color: white;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            z-index: 50;
+            user-select: none;
+        }
+        #lives {
+            position: absolute;
+            top: 55px;
+            left: 25px;
+            display: flex;
+            gap: 8px;
+            z-index: 50;
+            user-select: none;
+        }
+        .heart {
+            width: 23px;
+            height: 23px;
+            fill: #ff4d4d;
+            transition: fill 0.3s ease;
+        }
+        .heart.dimmed {
+            fill: #666666;
+        }
+        #pause-button {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            cursor: pointer;
+            background: rgba(74, 105, 189, 0.7);
+            padding: 5px;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+            z-index: 50;
+            user-select: none;
+        }
+        #pause-button:hover {
+            background: #6a89cc;
+        }
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 300;
+        }
+        #modal, #sound-modal, #victory-modal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            display: none;
+            z-index: 200;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            user-select: none;
+        }
+        .modal-content { 
+            display: block;
+            flex-direction: column; 
+            align-items: center; 
+            max-width: 400px;
+        }
+        #modal p, #sound-modal p, #victory-modal p { 
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #ffffff;
+            user-select: none;
+        }
+        #modal button, #sound-modal button, #try-again-button, #victory-modal button {
+            margin: 10px;
+            padding: 12px 25px;
+            background: linear-gradient(to right, #4a69bd, #6a89cc);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+        }
+        #modal button:hover, #sound-modal button:hover, #try-again-button:hover, #victory-modal button:hover { 
+            background: linear-gradient(to right, #6a89cc, #4a69bd);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            
+        }
+        #modal button:active, #sound-modal button:active, #try-again-button:active, #victory-modal button:active { 
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            
+        }
+        #try-again-button {
+            position: absolute;
+            top: 70%;
+            left: 34%;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            z-index: 101;
+        }
+        #victory-modal #copy-message-button { 
+            position: static; 
+            transform: none; 
+            display: flex;
+            margin-top: 20px;
+        }
+        #try-again-button svg, #victory-modal #copy-message-button svg { 
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+        .sky {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            display: none;
+            user-select: none;
+        }
+        .cloud {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.9;
+            box-shadow:
+                40px 15px 0 0 #fff,
+                80px 7px 0 0 #fff,
+                60px -15px 0 0 #fff,
+                20px -7px 0 0 #fff;
+            width: 80px;
+            height: 50px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            user-select: none;
+        }
+        .cloud1 {
+            margin-left: -200px;
+            margin-top: -80px;
+            animation: orbitCloud1 60s linear infinite;
+        }
+        .cloud2 {
+            margin-left: 0px;
+            margin-top: -120px;
+            animation: orbitCloud2 80s linear infinite;
+        }
+        .cloud3 {
+            margin-left: 200px;
+            margin-top: -60px;
+            animation: orbitCloud3 70s linear infinite;
+        }
+        .cloud4 {
+            margin-left: -350px;
+            margin-top: 20px;
+            animation: orbitCloud4 90s linear infinite;
+        }
+        @keyframes orbitCloud1 {
+            0% { transform: translate(-50%, -50%) translate(0, 0); }
+            25% { transform: translate(-50%, -50%) translate(50px, 30px); }
+            50% { transform: translate(-50%, -50%) translate(100px, 0); }
+            75% { transform: translate(-50%, -50%) translate(50px, -30px); }
+            100% { transform: translate(-50%, -50%) translate(0, 0); }
+        }
+        @keyframes orbitCloud2 {
+            0% { transform: translate(-50%, -50%) translate(0, 0); }
+            25% { transform: translate(-50%, -50%) translate(-30px, 60px); }
+            50% { transform: translate(-50%, -50%) translate(0, 120px); }
+            75% { transform: translate(-50%, -50%) translate(30px, 60px); }
+            100% { transform: translate(-50%, -50%) translate(0, 0); }
+        }
+        @keyframes orbitCloud3 {
+            0% { transform: translate(-50%, -50%) translate(0, 0); }
+            25% { transform: translate(-50%, -50%) translate(-100px, -20px); }
+            50% { transform: translate(-50%, -50%) translate(-200px, 0); }
+            75% { transform: translate(-50%, -50%) translate(-100px, 20px); }
+            100% { transform: translate(-50%, -50%) translate(0, 0); }
+        }
+        @keyframes orbitCloud4 {
+            0% { transform: translate(-50%, -50%) translate(0, 0); }
+            25% { transform: translate(-50%, -50%) translate(80px, -40px); }
+            50% { transform: translate(-50%, -50%) translate(160px, 0); }
+            75% { transform: translate(-50%, -50%) translate(80px, 40px); }
+            100% { transform: translate(-50%, -50%) translate(0, 0); }
+        }
+        #sun {
+            position: absolute;
+            top: 20%;
+            left: 20px;
+            transform: translateY(-50%);
+            width: 110px;
+            height: 110px;
+            z-index: 2;
+            display: none;
+            user-select: none;
+        }
+        #moon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 110px;
+            height: 110px;
+            z-index: 2;
+            display: none;
+            user-select: none;
+        }
+        #victory-modal img {
+  width: 150px;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caminho da Esperança</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="game-canvas" width="800" height="400"></canvas>
+        <div class="sky" id="css-sky">
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+            <div class="cloud cloud3"></div>
+            <div class="cloud cloud4"></div>
+        </div>
+        <svg id="sun" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="#FFC107"/>
+            <filter id="sun-glow">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+            </filter>
+        </svg>
+        <svg id="moon" viewBox="0 0 90 90">
+            <path d="M50,10 A40,40 0 0,1 90,50 A40,40 0 0,1 50,90 C20,90 10,70 10,50 C10,30 20,10 50,10" fill="#E0E0E0"/>
+            <filter id="moon-glow">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
+            </filter>
+        </svg>
+        <div id="score">Nível: 1 | Luzes: 0/10</div>
+        <div id="lives">
+            <svg class="heart" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <svg class="heart" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <svg class="heart" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <svg class="heart" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <svg class="heart" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            </svg>
+            <svg class="heart" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+        </div>
+        <div id="message"></div>
+        <div id="level-message"></div>
+        <div id="game-over-message"></div>
+        <button id="try-again-button">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+            <path d="M 3.5 2 C 3.372 2 3.2444844 2.0494844 3.1464844 2.1464844 C 2.9514844 2.3414844 2.9514844 2.6585156 3.1464844 2.8535156 L 5.09375 4.8007812 C 3.1950225 6.6199194 2 9.1685121 2 12 C 2 17.511334 6.4886661 22 12 22 C 17.511334 22 22 17.511334 22 12 C 22 6.864114 18.106486 2.6175896 13.109375 2.0644531 A 1.0001 1.0001 0 0 0 13.009766 2.0585938 A 1.0001 1.0001 0 0 0 12.890625 4.0527344 C 16.891514 4.4955979 20 7.871886 20 12 C 20 16.430666 16.430666 20 12 20 C 7.5693339 20 4 16.430666 4 12 C 4 9.7105359 4.967513 7.6643975 6.5039062 6.2109375 L 8.1464844 7.8535156 C 8.3414844 8.0485156 8.6585156 8.0485156 8.8535156 7.8535156 C 8.9515156 7.7565156 9 7.628 9 7.5 L 9 3 A 1 1 0 0 0 8 2 L 3.5 2 z"></path>
+            </svg>
+            Tentar Novamente
+        </button>
+        <svg id="pause-button" width="30" height="30" viewBox="0 0 24 24" fill="white">
+            <path id="pause-icon" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            <path id="play-icon" d="M8 5v14l11-7z" style="display: none;"/>
+        </svg>
+        <div id="modal">
+            <p>Jogo Pausado</p>
+            <button id="continue-button">Continuar</button>
+            <button id="restart-button">Reiniciar</button>
+        </div>
+    </div>
+
+    <div id="sound-modal" class="modal-overlay">
+        <div class="modal-content">
+            <p>Ativar Sons do Jogo?</p>
+            <button id="activate-sound-button">Sim</button>
+            <button id="deactivate-sound-button">Não</button>
+            <div class="como-jogar">
+            <h2>Como Jogar</h2>
+            Clique no <img width="50" height="50" src="https://img.icons8.com/ios/50/FFFFFF/space-key.png" alt="tecla de espaço"/> [espaço] do seu teclado para pular os obstáculos e coletar as luzes.
+            </div>
+        </div>
+    </div>
+
+    <div id="victory-modal" class="modal-overlay">
+        <div class="modal-content">
+            <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" alt="Troféu de Vitória">
+            <p id="victory-message-text"></p>
+            <button id="copy-message-button">
+                <svg viewBox="0 0 24 24">
+                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                </svg>
+                Copiar Mensagem
+            </button>
+        </div>
+    </div>
+
+    <audio id="background-music" loop>
+        <source src="assets/sons/fundo.mp3" type="audio/mp3">
+    </audio>
+    <audio id="light-sound">
+        <source src="assets/sons/luz.mp3" type="audio/mp3">
+    </audio>
+    <audio id="obstacle-sound">
+        <source src="assets/sons/obstaculo.mp3" type="audio/mp3">
+    </audio>
+    <audio id="victory-sound">
+        <source src="assets/sons/vitoria.mp3" type="audio/mp3">
+    </audio>
+    <script src="assets/functions.js"></script>
+</body>
+</html>
